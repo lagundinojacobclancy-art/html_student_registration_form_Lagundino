@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Account</title>
+</head>
+<body>
+    <header>
+        <h1>Create Your Account</h1>
+        <p>Step 2 of 2: Security Credentials</p>
+    </header>
+    <main>
+        <from action ="registration_success.html" method ="post">
+            <fieldset>
+                <legend>Account Security</legend>
+
+                <div>
+                    <label for="username">Username:</label><br>
+                    <input 
+                    type="text" 
+                    id="username"
+                    name="username" 
+                    required
+                    placeholder="e.g. IT_Student2026"
+                    required minlenght="5" maxlength="15"><br>
+                    <small>Must be 5-15 characters long.</small>
+                
+                </div>
+
+                <br>
+                <br>
+                <!-- password -->
+                <div>
+                    <label for="Password">Password:</label><br>
+                    <input 
+                    type="password" 
+                    id="password"
+                    name="password" 
+                    required
+                    placeholder="Input your Password.."
+                    required minlength="8"
+                    >
+                    <br>
+                    <small>Minimum 8 characters.</small>
+                </div>
+                <br>
+                <br>
+                    <!-- confirm password -->
+                     <div>
+                    <label for="confirm_password">Confirm Password:</label><br>
+                    <input 
+                    type="password"
+                    id="confirm_password" 
+                    name="confirm_password" 
+                    required
+                    placeholder="Re-Input your Password.."
+                    required 
+                    minlength="8"
+                    >
+                    <br>
+                    <br>
+                
+                <div>
+
+                    <!-- Term and condition -->
+                     <div>
+                        <input
+                        type="checkbox"
+                        id="terms"
+                        name="terms"
+                        required>
+                       <label for="terms"> I agree to <a href="#">IT Department's Acceptable User Policy</a></label>
+                     </div>
+                    </fieldset>
+                     <br>
+
+                     <div>
+                        <button type="button" onclick="history.back()">Back to Personal Info</button>
+                        <button type="submit">Complete Registration</button>
+                        <button type="reset">Clear Form</button>
+                     </div>
+            
+        </form>
+    </main>
+    <footer>&copy;Clancy Lagundino </footer>
+       
+</body>
+</html>
