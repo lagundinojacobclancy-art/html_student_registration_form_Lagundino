@@ -1,0 +1,211 @@
+:root {
+    --bg-dark: #17072b; /* Deep Dark Purple */
+    --bg-gradient-start: #1c0836;
+    --bg-gradient-end: #0e041c;
+    --gold: #d4af37; /* Metallic Gold */
+    --gold-light: #f9e596;
+    --gold-dark: #aa8621;
+    --light-purple: #9a72b8;
+    --text-main: #fcfcfc;
+    --text-muted: #d0bde0;
+    --glass-bg: rgba(30, 10, 50, 0.65);
+    --border-radius: 4px; /* Sharper elegant corners */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    background: radial-gradient(circle at 50% 0%, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Elegant ambient floating particles / dust */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.03) 0%, transparent 80%);
+    background-size: 100vw 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.form-wrapper {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 100%;
+    max-width: 460px;
+    padding: 3.5rem 3rem;
+    position: relative;
+    z-index: 10;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: var(--border-radius);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(212, 175, 55, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.form-wrapper::before {
+    /* Elegant inner gold border line */
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    pointer-events: none;
+    border-radius: 2px;
+}
+
+.form-wrapper:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.form-header {
+    margin-bottom: 2.5rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.form-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.form-header::after {
+    /* Gold divider line with diamond center */
+    content: "◆";
+    color: var(--gold);
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+    border-radius: 0;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+/* Input Focus States */
+.input-group input:focus {
+    border-bottom-color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.input-group input:focus+label,
+.input-group input:not(:placeholder-shown)+label {
+    top: -10px;
+    left: 0;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Custom autofill style to maintain theme */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1a0830 inset !important;
+    -webkit-text-fill-color: var(--text-main) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Submit Button - Elegant Gold */
+.submit-btn {
+    width: 100%;
+    padding: 15px 20px;
+    margin-top: 1.5rem;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    background-size: 200% 200%;
+    color: #120420;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.4s ease;
+    border-radius: 2px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    z-index: 1;
+}
+
+.submit-btn:hover {
+    background-position: 100% 50%;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* Responsive adjustment */
+@media (max-width: 480px) {
+    .form-wrapper {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .form-header h2 {
+        font-size: 1.8rem;
+    }
+}

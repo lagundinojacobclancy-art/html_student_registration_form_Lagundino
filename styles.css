@@ -1,0 +1,471 @@
+:root {
+    --bg-dark: #0d0e15;
+    --star-white: #ffffff;
+    --nebula-purple: #bc13fe;
+    --nebula-pink: #ff00ff;
+    --nebula-blue: #00f3ff;
+    --surface-color: rgba(13, 14, 21, 0.7);
+    --border-color: rgba(188, 19, 254, 0.4);
+    --text-primary: #e0e0e0;
+    --text-secondary: #8892b0;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- Galaxy Background --- */
+.stars,
+.twinkling,
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stars {
+    background: #000 url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png') repeat top center;
+    z-index: -3;
+}
+
+.twinkling {
+    background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png') repeat top center;
+    z-index: -2;
+    animation: move-twink-back 200s linear infinite;
+}
+
+.clouds {
+    background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds.png') repeat top center;
+    z-index: -1;
+    opacity: 0.4;
+    animation: move-clouds-back 200s linear infinite;
+}
+
+@keyframes move-twink-back {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -10000px 5000px;
+    }
+}
+
+@keyframes move-clouds-back {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 10000px 0;
+    }
+}
+
+/* Nebulas */
+.nebula-1,
+.nebula-2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    opacity: 0.6;
+    animation: pulse-nebula 12s infinite alternate ease-in-out;
+}
+
+.nebula-1 {
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--nebula-purple) 0%, transparent 70%);
+    top: -20vh;
+    left: -10vw;
+}
+
+.nebula-2 {
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--nebula-blue) 0%, transparent 70%);
+    bottom: -30vh;
+    right: -20vw;
+    animation-delay: -6s;
+}
+
+@keyframes pulse-nebula {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+/* --- Glassmorphism Container --- */
+.form-container {
+    background: var(--surface-color);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 0 40px rgba(138, 43, 226, 0.2),
+        inset 0 0 20px rgba(0, 255, 255, 0.05);
+    position: relative;
+    z-index: 10;
+    animation: float-form 6s ease-in-out infinite;
+}
+
+@keyframes float-form {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Glowing border effect */
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--nebula-purple), var(--nebula-blue), var(--nebula-pink), var(--nebula-purple));
+    background-size: 400%;
+    z-index: -1;
+    border-radius: 22px;
+    animation: border-glow 15s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes border-glow {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+header {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.portal-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: var(--nebula-blue);
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #fff, var(--nebula-blue));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* --- Floating Inputs --- */
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 18px 15px 10px 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: var(--star-white);
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.input-group label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    pointer-events: none;
+    transition: 0.3s ease all;
+}
+
+.input-glow {
+    position: absolute;
+    bottom: -1px;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: transparent;
+    transition: 0.4s ease all;
+    box-shadow: 0 0 0 transparent;
+}
+
+.input-group input:focus {
+    border-color: rgba(138, 43, 226, 0.5);
+    background: rgba(138, 43, 226, 0.05);
+}
+
+.input-group input:focus~.input-glow,
+.input-group input:not(:placeholder-shown)~.input-glow {
+    background: var(--nebula-blue);
+    box-shadow: 0 0 15px var(--nebula-blue), 0 0 5px var(--nebula-white);
+}
+
+.input-group input:focus~label,
+.input-group input:not(:placeholder-shown)~label {
+    top: 4px;
+    font-size: 0.7rem;
+    color: var(--nebula-blue);
+    letter-spacing: 1px;
+}
+
+/* --- Galaxy Checkbox --- */
+.checkbox-group {
+    margin-bottom: 35px;
+}
+
+.galaxy-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    position: relative;
+}
+
+.galaxy-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-right: 12px;
+    transition: all 0.3s;
+}
+
+.galaxy-checkbox:hover input~.checkmark {
+    border-color: var(--nebula-blue);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.galaxy-checkbox input:checked~.checkmark {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: var(--nebula-blue);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--nebula-blue);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    box-shadow: 2px 2px 5px rgba(0, 255, 255, 0.5);
+}
+
+.galaxy-checkbox input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkbox-text a {
+    color: var(--nebula-blue);
+    text-decoration: none;
+    position: relative;
+}
+
+.checkbox-text a:hover {
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+}
+
+/* --- Cosmic Buttons --- */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping if needed */
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn {
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    /* Slightly smaller to fit 3 */
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.btn-primary {
+    flex: 2;
+    /* Takes up more space */
+    min-width: 140px;
+    background: linear-gradient(135deg, var(--nebula-purple), var(--nebula-blue));
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+.btn-primary:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--nebula-blue), var(--nebula-purple));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-primary:hover:before {
+    opacity: 1;
+}
+
+/* Login Portal Button */
+.btn-secondary {
+    flex: 1.5;
+    background: rgba(0, 255, 255, 0.05);
+    color: var(--nebula-blue);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 255, 255, 0.15);
+    border-color: var(--nebula-blue);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-tertiary {
+    flex: 1;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-tertiary:hover {
+    background: rgba(255, 20, 147, 0.1);
+    border-color: var(--nebula-pink);
+    color: var(--nebula-pink);
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+}
+
+/* Button Stars Effect */
+.btn-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png') repeat top center;
+    opacity: 0;
+    z-index: -1;
+    mix-blend-mode: screen;
+    transition: opacity 0.3s ease;
+    animation: move-twink-back 50s linear infinite;
+}
+
+.btn-primary:hover .btn-stars {
+    opacity: 0.5;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}

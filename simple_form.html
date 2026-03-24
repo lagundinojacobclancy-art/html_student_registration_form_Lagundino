@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Registration</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="simple_form.css">
+</head>
+
+<body>
+
+    <div class="form-wrapper">
+        <div class="form-header">
+            <h2>Join Us</h2>
+        </div>
+
+        <form action="dragon_success.html" method="get" id="minimalist-form">
+            <div class="input-group">
+                <input type="text" id="name" name="name" required placeholder=" ">
+                <label for="name">Enter your full name</label>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" name="email" required placeholder=" ">
+                <label for="email">Enter Email</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" name="password" required placeholder=" " minlength="8">
+                <label for="password">Set password</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder=" "
+                    minlength="8">
+                <label for="confirm_password">Confirm password</label>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Register
+            </button>
+        </form>
+    </div>
+
+</body>
+
+</html>
